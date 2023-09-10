@@ -8,6 +8,7 @@ import {
   useRef,
 } from "react";
 import { CounterReducer } from "./components/CounterReducer";
+import { CounterProvider, initialState } from "./context/CounterContext";
 
 interface User {
   id: number;
@@ -59,7 +60,9 @@ function App() {
       <h1>{fiboResult}</h1>
       <input ref={inputRef} type="text" />
 
-      <CounterReducer>{(num: number)=><>Current count {num} </>}</CounterReducer>
+      <CounterProvider count={initialState.count} text={initialState.text}>
+        <CounterReducer>{(num: number)=><>Current count {num} </>}</CounterReducer>
+      </CounterProvider>
     </>
   );
 }
