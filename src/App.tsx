@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
 } from "react";
+import { CounterReducer } from "./components/CounterReducer";
 
 interface User {
   id: number;
@@ -33,6 +34,7 @@ function App() {
   useEffect(() => {
     console.log("mounting");
     console.log("Users:", users);
+    
 
     return () => console.log("unmounting");
   }, [users]);
@@ -56,6 +58,8 @@ function App() {
       <button onClick={addTwo}>+2</button>
       <h1>{fiboResult}</h1>
       <input ref={inputRef} type="text" />
+
+      <CounterReducer>{(num: number)=><>Current count {num} </>}</CounterReducer>
     </>
   );
 }
